@@ -26,21 +26,33 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 375px;
+  width: 100%;
   margin: 0;
   padding: 0;
   grid-area: title;
 }
 
 .profile__edit-button {
-  background: transparent url(../images/Edit-Button.svg) center no-repeat;
+  background: transparent url(../images/pencil.svg) center no-repeat;
   height: 24px;
   width: 24px;
   grid-area: edit-button;
   align-self: center;
-  border-style: none;
+  border: 1px solid #fff;
   margin: 0;
   margin-left: 18px;
   padding: 0;
+  background-size: 10px;
+}
+
+.profile__edit-button:hover {
+  opacity: 50%;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
 }
 
 .profile__description {
@@ -64,33 +76,27 @@
   margin-left: auto;
   padding-right: 165px;
   border-style: none;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
+  border-radius: 2px;
   grid-area: add-button;
+  background-size: 22px;
+}
+
+.profile__add-button:hover {
+  opacity: 50%;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
 }
 
 @media screen and (max-width: 919px) {
-  .profile__add-button {
-    margin-left: auto;
-  }
-
   .profile__title {
     font-size: 28px;
-  }
-
-  .footer__copyright {
-    max-width: 282px;
-    width: 100%;
   }
 }
 
 @media screen and (max-width: 690px) {
-  .profile__add-button {
-    margin-left: auto;
-  }
-
   .profile__title {
     font-size: 22px;
-    font-weight: 500;
     line-height: 26.63px;
   }
 }
@@ -104,11 +110,12 @@
   .profile__edit-button {
     height: 18px;
     width: 18px;
+    border: 1px solid #fff;
     margin-left: 10px;
+    background-size: 7.5px;
   }
 
   .profile {
-    display: flex;
     flex-direction: column;
     padding-top: 42px;
     padding-bottom: 36px;
@@ -119,6 +126,7 @@
     max-width: 282px;
     width: 100%;
     padding-bottom: 30px;
+    background-size: 16px;
   }
 
   .profile__description {
@@ -127,8 +135,12 @@
     margin: 14px 0 36px 0;
     padding: 0;
     text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    font-size: 14px;
+    line-height: 16.94px;
+  }
+
+  .profile__title {
+    max-width: 196px;
+    width: 100%;
   }
 }
