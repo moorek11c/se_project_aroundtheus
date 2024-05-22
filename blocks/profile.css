@@ -47,17 +47,17 @@
   margin-left: 18px;
   padding: 0;
   background-size: 10px;
+  transition: ease-in-out 0.2s;
 }
 
 .profile__edit-button:hover {
-  opacity: 50%;
+  opacity: 60%;
   cursor: pointer;
-  transition: ease-in-out 0.2s;
 }
 
 .profile__description {
   font-family: "inter", "Times New Roman", serif;
-  font-size: 400px;
+  max-width: 400px;
   font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
@@ -74,18 +74,17 @@
   width: 150px;
   height: 50px;
   margin-left: auto;
-  padding-right: 165px;
   border-style: none;
   border: 2px solid #fff;
   border-radius: 2px;
   grid-area: add-button;
   background-size: 22px;
+  transition: ease-in-out 0.2s;
 }
 
 .profile__add-button:hover {
-  opacity: 50%;
+  opacity: 60%;
   cursor: pointer;
-  transition: ease-in-out 0.2s;
 }
 
 @media screen and (max-width: 919px) {
@@ -110,7 +109,6 @@
   .profile__edit-button {
     height: 18px;
     width: 18px;
-    border: 1px solid #fff;
     margin-left: 10px;
     background-size: 7.5px;
   }
