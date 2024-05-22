@@ -24,7 +24,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 - [Link to github pages](https://github.com/moorek11c/se_project_aroundtheus)
-- [Link to video] (https://drive.google.com/file/d/1Wb_hk_2v6XoeD7vYOkL4Ty-AtZLE8amY/view?usp=drive_link)
+- [Link to video](https://drive.google.com/file/d/1Wb_hk_2v6XoeD7vYOkL4Ty-AtZLE8amY/view?usp=drive_link)
 
 ###### Images
 
