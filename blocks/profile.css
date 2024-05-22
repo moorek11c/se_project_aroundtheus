@@ -5,6 +5,7 @@
   align-items: center;
   padding-top: 40px;
   padding-bottom: 51px;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 .profile__picture {
@@ -22,7 +23,6 @@
 }
 
 .profile__title {
-  font-family: "inter", "Times New Roman", serif;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
@@ -56,7 +56,6 @@
 }
 
 .profile__description {
-  font-family: "inter", "Times New Roman", serif;
   max-width: 400px;
   font-weight: 400;
   font-size: 18px;
