@@ -1,0 +1,159 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  color: rgb(0, 0, 0);
+  display: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+}
+
+.modal__opened {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: auto;
+  max-width: 430px;
+  width: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  width: 100%;
+  height: 330px;
+}
+
+.close__button {
+  background-image: url("../images/Close\ Icon.svg");
+  background-color: transparent;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: ease-in-out 0.2s;
+}
+
+.close__button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+::placeholder {
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 16.94px;
+  color: #000;
+  width: 358px;
+  height: 27.34px;
+}
+
+.modal__heading {
+  max-width: 330px;
+  width: 100%;
+  height: 23px;
+  align-self: self-start;
+  padding: 0;
+  margin: 34px 0 0 36px;
+}
+
+.modal__profile-title {
+  max-width: 358px;
+  width: 100%;
+  height: 27.26px;
+  margin-top: 54px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  padding: 0 0 13px;
+}
+
+.modal__profile-description {
+  max-width: 358px;
+  width: 100%;
+  height: 27.26px;
+  padding: 0;
+  margin-top: 29px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  padding: 0 0 13px;
+}
+
+.save__button {
+  max-width: 358px;
+  width: 100%;
+  height: 50.15px;
+  padding: 0;
+  background-color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: center;
+  color: white;
+  margin-top: 35px;
+  margin-bottom: 36.51px;
+  border: none;
+  border-radius: 2px;
+  transition: ease-in-out 0.2s;
+}
+
+.save__button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+@media screen and (max-width: 626px) {
+  .modal__container {
+    max-width: 282px;
+    height: 322px;
+  }
+
+  .modal__form {
+    max-width: 238px;
+    width: 100%;
+  }
+
+  .modal__heading {
+    max-width: 238px;
+    font-size: 18px;
+    margin: 25px 22px 0;
+  }
+
+  .close__button {
+    width: 26px;
+    height: 26px;
+    top: -36px;
+    right: 0px;
+  }
+
+  .save__button {
+    width: 238px;
+    height: 46px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+}
