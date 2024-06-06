@@ -68,6 +68,34 @@
         ></button>
       </div>
     </div>
+    <!--add card modal-->
+    <div class="modal" id="profile-card-modal">
+      <div class="modal__container">
+        <h2 class="modal__heading">New Place</h2>
+        <form class="modal__form" id="newCardForm">
+          <input
+            class="modal__input"
+            placeholder="Place"
+            type="text"
+            name="Place Title"
+            required
+          />
+          <input
+            class="modal__input"
+            placeholder="Image Link"
+            type="text"
+            name="image url"
+            required
+          />
+          <button class="modal__save-button" type="submit">Save</button>
+        </form>
+        <button
+          class="modal__close-button"
+          id="modal-close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__photo" />
