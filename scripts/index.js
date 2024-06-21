@@ -54,21 +54,21 @@ const profileTitleInput = document.querySelector(".modal__input");
 const profileDescriptionInput = document.querySelector(
   ".modal__input:last-of-type"
 );
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = profileEditModal.querySelector("#editProfileForm");
 const addCardForm = profileCardModal.querySelector("#newCardForm");
 const cardListEl = document.querySelector(".cards__list");
 
 const cardTitleInput = addCardForm.querySelector(".modal__input_type_title");
 const cardUrlInput = addCardForm.querySelector(".modal__input_type_url");
 
-const likeButtons = document.querySelectorAll(".card__like-button");
-
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscapeKeyPress);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscapeKeyPress);
 }
 
 function renderCard(cardData, cardListEl) {
@@ -80,7 +80,6 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__photo");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardImageElAlt = cardImageEl.alt;
   const likeButton = cardElement.querySelector(".card__like-button");
   const cardDeleteBtn = cardElement.querySelector(".card__delete-button");
 
@@ -106,17 +105,25 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-document.addEventListener("keydown", (event) => {
+function handleEscapeKeyPress(event) {
   if (event.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
     if (openedModal) {
       closeModal(openedModal);
     }
   }
-});
+}
 
 function addClickOutsideToClose(modal) {
-  modal.addEventListener("click", (event) => {
+  modal.addEventListener("", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+}
+
+function addClickOutsideToClose(modal) {
+  modal.addEventListener("mousedown", (event) => {
     if (event.target === modal) {
       closeModal(modal);
     }
