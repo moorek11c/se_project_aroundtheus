@@ -41,25 +41,37 @@
         <p class="footer__copyright">&#169; 2022 Around The U.S.</p>
       </footer>
     </div>
+
+    <!-- profile edit form -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <h2 class="modal__heading">Edit Profile</h2>
-        <form class="modal__form">
+        <form class="modal__form" novalidate>
           <input
+            id="profile-title"
             class="modal__input"
             placeholder="Name"
             type="text"
             name="profile__title"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="modal__error" id="profile-title-error"></span>
           <input
+            id="profile-description"
             class="modal__input"
             placeholder="Description"
             type="text"
             name="profile__description"
+            minlength="2"
+            maxlength="200"
             required
           />
-          <button class="modal__save-button" type="submit">Save</button>
+          <span class="modal__error" id="profile-description-error"></span>
+          <button class="modal__button modal__save-button" type="submit">
+            Save
+          </button>
         </form>
         <button
           class="modal__close-button"
@@ -75,19 +87,31 @@
         <form class="modal__form" id="newCardForm">
           <input
             class="modal__input modal__input_type_title"
+            id="place-title"
             placeholder="Title"
             type="text"
             name="Place Title"
+            minlength="1"
+            max="30"
             required
           />
+          <span class="modal__error" id="place-title-error"></span>
           <input
+            id="place-url"
             class="modal__input modal__input_type_url"
             placeholder="Image Link"
             type="url"
             name="image url"
             required
           />
-          <button class="modal__save-button" type="submit">Create</button>
+          <span class="modal__error" id="place-url-error"></span>
+          <button
+            class="modal__button modal__save-button"
+            type="submit"
+            disabled
+          >
+            Create
+          </button>
         </form>
         <button
           class="modal__close-button"
@@ -125,5 +149,6 @@
       </li>
     </template>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>

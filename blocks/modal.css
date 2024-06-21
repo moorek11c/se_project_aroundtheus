@@ -59,11 +59,6 @@
   transition: ease-in-out 0.2s;
 }
 
-.modal__close-button:hover {
-  cursor: pointer;
-  opacity: 60%;
-}
-
 ::placeholder {
   font-size: 14px;
   font-weight: 400px;
@@ -80,6 +75,7 @@
   align-self: self-start;
   padding: 0;
   margin: 34px 0 0 36px;
+  font-size: 24px;
 }
 
 .modal__input {
