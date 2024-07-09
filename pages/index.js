@@ -1,5 +1,7 @@
 import Card from "../components/card.js";
 
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -84,6 +86,19 @@ function renderCard(cardData, cardListEl) {
   cardListEl.prepend(cardElement);
 }
 
+const Settings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const editFormValidator = new FormValidator(Settings, profileEditForm);
+const addFormValidator = new FormValidator(Settings, addCardForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
 // function getCardElement(cardData) {
 //   const cardElement = cardTemplate.cloneNode(true);
 //   const cardImageEl = cardElement.querySelector(".card__photo");
@@ -123,12 +138,16 @@ function handleEscapeKeyPress(event) {
 }
 
 function addClickOutsideToClose(modal) {
-  modal.addEventListener("", (event) => {
+  window.addEventListener("click", (event) => {
     if (event.target === modal) {
       closeModal(modal);
     }
   });
 }
+
+addClickOutsideToClose(profileEditModal);
+addClickOutsideToClose(profileCardModal);
+addClickOutsideToClose(previewImageModal);
 
 function handleImageClick(data) {
   previewPhoto.src = data.link;
@@ -157,6 +176,7 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   addCardForm.reset();
   closeModal(profileCardModal);
+  addFormValidator.disableButton();
 }
 
 previewCloseButton.addEventListener("click", () =>

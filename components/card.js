@@ -21,9 +21,11 @@ export default class Card {
       this._handleDeleteClick();
     });
 
+    // imageclick
+
     this._cardImageEl = this._cardElement.querySelector(".card__photo");
     this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick(this._data);
+      this._handleImageClick({ name: this._name, link: this._link });
     });
   }
 
