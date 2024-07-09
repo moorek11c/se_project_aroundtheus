@@ -99,35 +99,6 @@ const addFormValidator = new FormValidator(Settings, addCardForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-// function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImageEl = cardElement.querySelector(".card__photo");
-//   const cardTitleEl = cardElement.querySelector(".card__title");
-//   const likeButton = cardElement.querySelector(".card__like-button");
-//   const cardDeleteBtn = cardElement.querySelector(".card__delete-button");
-
-//   cardImageEl.addEventListener("click", () => {
-//     previewPhoto.src = cardData.link;
-//     titlePreview.textContent = cardData.name;
-//     previewPhoto.alt = cardData.name;
-//     openModal(previewImageModal);
-//   });
-
-//   cardDeleteBtn.addEventListener("click", () => {
-//     cardElement.remove();
-//   });
-
-//   likeButton.addEventListener("click", () => {
-//     likeButton.classList.toggle("card__like-button_active");
-//   });
-
-//   cardTitleEl.textContent = cardData.name;
-//   cardImageEl.src = cardData.link;
-//   cardImageEl.alt = cardData.name;
-
-//   return cardElement;
-// }
-
 function handleEscapeKeyPress(event) {
   if (event.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
@@ -176,7 +147,6 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   addCardForm.reset();
   closeModal(profileCardModal);
-  addFormValidator.disableButton();
 }
 
 previewCloseButton.addEventListener("click", () =>
