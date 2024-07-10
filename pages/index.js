@@ -111,7 +111,7 @@ function handleEscapeKeyPress(event) {
 }
 
 function addClickOutsideToClose(modal) {
-  addEventListener("mousedown", (event) => {
+  modal.addEventListener("mousedown", (event) => {
     if (event.target === modal) {
       closeModal(modal);
     }
