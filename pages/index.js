@@ -54,9 +54,11 @@ const previewCloseButton = previewImageModal.querySelector(
 
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-const profileTitleInput = document.querySelector(".modal__input");
-const profileDescriptionInput = document.querySelector(
-  ".modal__input:last-of-type"
+const profileTitleInput = profileEditModal.querySelector(
+  ".modal__input_type_name"
+);
+const profileDescriptionInput = profileEditModal.querySelector(
+  ".modal__input_type_description"
 );
 const profileEditForm = profileEditModal.querySelector("#editProfileForm");
 const addCardForm = profileCardModal.querySelector("#newCardForm");
@@ -145,7 +147,8 @@ function handleAddCardFormSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
-  addCardForm.reset();
+  evt.target.reset();
+  addFormValidator.resetValidation();
   closeModal(profileCardModal);
 }
 

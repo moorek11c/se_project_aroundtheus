@@ -1,6 +1,0 @@
-{
-  "javascript.format.enable": true,
-  "typescript.validate.enable": true,
-  "js/ts.implicitProjectConfig.checkJs": false,
-  "typescript.tsserver.watchOptions": {}
-}
