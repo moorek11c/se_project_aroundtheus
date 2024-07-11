@@ -4,6 +4,8 @@ import FormValidator from "../components/FormValidator.js";
 
 import Section from "../components/Section.js";
 
+import PopupWithForm from "../components/PopupWithForm.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -89,6 +91,26 @@ function renderCard(cardData, cardListEl) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
+
+const newCardPopUp = new PopupWithForm("#profile-card-modal", () => {
+  const name = newCardPopUp.getInputValues().name;
+  const link = newCardPopUp.getInputValues().link;
+  renderCard({ name, link }, cardListEl);
+  newCardPopUp.close();
+  console.log("New card added");
+});
+
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const card = createCard(cardData);
+      cardList.addItem(card);
+    },
+  },
+  ".cards__list"
+);
+cardList.renderItems();
 
 const Settings = {
   inputSelector: ".modal__input",
