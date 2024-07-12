@@ -33,8 +33,8 @@ const initialCards = [
   },
 ];
 
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+// const cardTemplate =
+//   document.querySelector("#card-template").content.firstElementChild;
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const addNewCardButton = document.querySelector(".profile__add-button");
@@ -74,13 +74,19 @@ const cardSelector = "#card-template";
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscapeKeyPress);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  document.addEventListener("keydown", handleEscapeKeyPress);
 }
+
+// function closeModal(modal) {
+//   modal.classList.remove("modal_is-opened");
+// }
+
+// function openModal(modal) {
+//   modal.classList.add("modal_is-opened");
+// }
 
 function createCard(data) {
   const card = new Card(data, cardSelector, handleImageClick);
@@ -91,6 +97,11 @@ function renderCard(cardData, cardListEl) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
+
+const editProfilePopUp = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 
 const newCardPopUp = new PopupWithForm("#profile-card-modal", () => {
   const name = newCardPopUp.getInputValues().name;
@@ -125,14 +136,14 @@ const addFormValidator = new FormValidator(Settings, addCardForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-function handleEscapeKeyPress(event) {
-  if (event.key === "Escape") {
-    const openedModal = document.querySelector(".modal_is-opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-}
+// function handleEscapeKeyPress(event) {
+//   if (event.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_is-opened");
+//     if (openedModal) {
+//       closeModal(openedModal);
+//     }
+//   }
+// }
 
 function addClickOutsideToClose(modal) {
   modal.addEventListener("mousedown", (event) => {
@@ -192,5 +203,3 @@ addNewCardButton.addEventListener("click", () => openModal(profileCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
   closeModal(profileCardModal)
 );
-
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
