@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Around the U.S.</title>
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/around-logo.svg"
+          src="<%=require('../src/images/around-logo.svg')%>"
           alt="around the us"
           class="header__logo"
         />
@@ -18,9 +17,9 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/Avatar.png"
-            alt="Profile picture"
+            alt="Profile"
             class="profile__picture"
+            src="<%=require('../src/images/Avatar.png')%>"
           />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
@@ -53,7 +52,7 @@
               class="modal__input modal__input_type_name"
               placeholder="name"
               type="text"
-              name="profile__title"
+              name="name"
               minlength="2"
               maxlength="40"
               required
@@ -66,7 +65,7 @@
               class="modal__input modal__input_type_description"
               placeholder="Description"
               type="text"
-              name="profile__description"
+              name="job"
               minlength="2"
               maxlength="200"
               required
@@ -95,7 +94,7 @@
               id="place-title"
               placeholder="Title"
               type="text"
-              name="Place Title"
+              name="name"
               minlength="1"
               max="30"
               required
@@ -108,7 +107,7 @@
               class="modal__input modal__input_type_url"
               placeholder="Image Link"
               type="url"
-              name="image url"
+              name="link"
               required
             />
             <span class="modal__error" id="place-url-error"></span>
@@ -156,6 +155,5 @@
         </div>
       </li>
     </template>
-    <script defer src="./pages/index.js" type="module"></script>
   </body>
 </html>
