@@ -64,8 +64,8 @@ const addCardPopup = new PopupWithForm(
 addCardPopup.setEventListeners();
 
 function handleAddCardFormSubmit(formValues) {
-  const card = createCard(formValues);
-  cardListEl.prepend(card);
+  const element = createCard(formValues);
+  section.addItem(element);
   addCardPopup.close();
 }
 
@@ -92,10 +92,7 @@ function handleProfileFormSubmit(formValues) {
  * userInfo *
  ************/
 
-const userInfo = new UserInfo({
-  name: "#profile-title",
-  job: "#profile-description",
-});
+const userInfo = new UserInfo(".profile__title", ".profile__description");
 
 // section
 
