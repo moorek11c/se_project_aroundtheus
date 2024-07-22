@@ -1,0 +1,25 @@
+.confirm__modal-container {
+  height: 181px;
+}
+
+.modal__yes-button {
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 626px) {
+  .confirm__modal-container {
+    height: 181px;
+  }
+
+  .modal__yes-button {
+    width: 238px;
+    height: 50px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+}

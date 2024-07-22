@@ -22,13 +22,13 @@
             src="<%=require('../src/images/Avatar.png')%>"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -39,6 +39,27 @@
       <footer class="footer page__section">
         <p class="footer__copyright">&#169; 2022 Around The U.S.</p>
       </footer>
+    </div>
+
+    <!-- Are you sure Modal -->
+    <div class="modal confirm__modal" id="confirmation-modal">
+      <div class="modal__container confirm__modal-container">
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="modal__form" action="">
+          <button
+            class="modal__button modal__yes-button"
+            id="confirm-delete-btn"
+            type="submit"
+          >
+            Yes
+          </button>
+        </form>
+        <button
+          class="modal__close-button"
+          id="confirm-button-close"
+          type="button"
+        ></button>
+      </div>
     </div>
 
     <!-- profile edit form -->
@@ -65,7 +86,7 @@
               class="modal__input modal__input_type_description"
               placeholder="Description"
               type="text"
-              name="job"
+              name="about"
               minlength="2"
               maxlength="200"
               required
@@ -143,6 +164,7 @@
         <h3 class="modal__preview-title" id="modal-title-preview"></h3>
       </div>
     </div>
+
     <template id="card-template">
       <li class="card">
         <div class="card_image_container">
