@@ -41,6 +41,9 @@ const profilePictureModal = document.querySelector("#profile-picture-modal");
 const profilePictureForm = profilePictureModal.querySelector(
   "#profile-picture-form"
 );
+const profilePictureSaveButton = profilePictureModal.querySelector(
+  "#profile-picture-save"
+);
 
 /*************
  * User Info *
@@ -68,8 +71,10 @@ const editFormValidator = new FormValidator(Settings, profileEditForm);
 editFormValidator.enableValidation();
 
 profileEditButton.addEventListener("click", () => {
-  userInfo.getUserInfo();
+  const currentUserInfo = userInfo.getUserInfo();
+  profilePopup.setInputsValues(currentUserInfo);
   profilePopup.open();
+  editFormValidator.resetValidation();
 });
 
 /******************
@@ -89,14 +94,14 @@ function handleProfileFormSubmit(formValues) {
       );
 
       profilePopup.close();
-      editFormValidator.resetValidation();
+      profileEditForm.reset();
+      editFormValidator.disableButton();
     })
     .catch((err) => {
       console.error("Error updating profile:", err);
     })
     .finally(() => {
       profilePopup.renderLoading(false);
-      editFormValidator.disableButton();
     });
 }
 
@@ -118,6 +123,7 @@ profilePictureFormValidator.enableValidation();
 
 profilePictureButton.addEventListener("click", () => {
   profilePicturePopup.open();
+  profilePictureFormValidator.resetValidation();
 });
 
 function handleAvatarFormSubmit(formValues) {
@@ -133,6 +139,7 @@ function handleAvatarFormSubmit(formValues) {
         updatedUser.avatar
       );
       profilePicturePopup.close();
+      profilePictureFormValidator.disableButton();
       profilePictureFormValidator.reset();
     })
     .catch((err) => {
@@ -140,7 +147,6 @@ function handleAvatarFormSubmit(formValues) {
     })
     .finally(() => {
       profilePicturePopup.renderLoading(false);
-      profilePictureFormValidator.disableButton();
     });
 }
 
@@ -168,6 +174,7 @@ addFormValidator.enableValidation();
 
 addNewCardButton.addEventListener("click", (evt) => {
   addCardPopup.open();
+  addFormValidator.resetValidation();
 });
 
 const addCardPopup = new PopupWithForm(
@@ -185,6 +192,7 @@ function handleAddCardFormSubmit(data) {
       const cardElement = createCard(newCard);
       section.addItem(cardElement);
       addCardPopup.close();
+      addFormValidator.disableButton();
       addFormValidator.reset();
     })
     .catch((err) => {
@@ -192,7 +200,6 @@ function handleAddCardFormSubmit(data) {
     })
     .finally(() => {
       addCardPopup.renderLoading(false);
-      addFormValidator.disableButton();
     });
 }
 
