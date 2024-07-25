@@ -74,7 +74,11 @@
             />
             <span class="modal__error" id="profile-description-error"></span>
           </label>
-          <button class="modal__button modal__save-button" type="submit">
+          <button
+            id="profile-save"
+            class="modal__button modal__save-button"
+            type="submit"
+          >
             Save
           </button>
         </form>
@@ -115,6 +119,7 @@
             <span class="modal__error" id="place-url-error"></span>
           </label>
           <button
+            id="card-save"
             class="modal__button modal__save-button"
             type="submit"
             disabled
@@ -151,11 +156,11 @@
         <h2 class="modal__heading">Are you sure?</h2>
         <form class="modal__form" action="">
           <button
-            class="modal__button modal__yes-button"
+            class="modal__button modal__save-button confirm__modal-button"
             id="confirm-delete-btn"
             type="submit"
           >
-            Yes
+            Save
           </button>
         </form>
         <button
@@ -167,7 +172,7 @@
     </div>
 
     <!-- Change Profile Picture Modal -->
-    <div class="modal" id="profile-picture-modal">
+    <div class="modal avatar__modal" id="profile-picture-modal">
       <div class="modal__container change__modal-container">
         <h2 class="modal__heading">Change Profile Picture</h2>
         <form class="modal__form" id="profile-picture-form">
@@ -182,7 +187,11 @@
             />
             <span class="modal__error" id="picture-url-error"></span>
           </label>
-          <button disabled class="modal__save-button" type="submit">
+          <button
+            class="modal__button modal__save-button"
+            id="profile-picture-save"
+            type="submit"
+          >
             Save
           </button>
         </form>
@@ -194,10 +203,6 @@
       </div>
     </div>
 
-    <div class="saving-overlay" id="saving-overlay">
-      <div class="saving-message">Saving...</div>
-    </div>
-
     <template id="card-template">
       <li class="card">
         <div class="card_image_container">
@@ -207,8 +212,6 @@
         <div class="card__description">
           <h3 class="card__title"></h3>
           <button class="card__like-button"></button>
-          <span class="card__like-count">0</span>
-          <!-- Like counter -->
         </div>
       </li>
     </template>

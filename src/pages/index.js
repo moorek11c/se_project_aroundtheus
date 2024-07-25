@@ -25,28 +25,26 @@ const api = new Api({
   },
 });
 
-// Show and hide saving overlay
-function showSavingText(button) {
-  button.textContent = "Saving...";
-  button.disabled = true;
-}
-
-function hideSavingText(button) {
-  button.textContent = "Save";
-  button.disabled = true;
-}
-
 /***********
  * Profile *
  ***********/
 
-// Selectors
-
 const profileEditButton = document.querySelector("#profile-edit-button");
-const profileCardModal = document.querySelector("#profile-card-modal");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector("#editProfileForm");
-const saveButton = document.querySelector(".modal__save-button");
+
+/*******************
+ * Profile Picture *
+ *******************/
+const profilePictureButton = document.querySelector(".pencil-icon");
+const profilePictureModal = document.querySelector("#profile-picture-modal");
+const profilePictureForm = profilePictureModal.querySelector(
+  "#profile-picture-form"
+);
+
+/*************
+ * User Info *
+ *************/
 
 const userInfo = new UserInfo(
   ".profile__title",
@@ -63,25 +61,27 @@ api
     console.error("Error fetching user info:", err);
   });
 
+/***************
+ * ProfileEdit *
+ ***************/
+const editFormValidator = new FormValidator(Settings, profileEditForm);
+editFormValidator.enableValidation();
+
 profileEditButton.addEventListener("click", () => {
-  const currentUserInfo = userInfo.getUserInfo();
-  profilePopup.setInputsValues(currentUserInfo);
+  userInfo.getUserInfo();
   profilePopup.open();
 });
 
-const profilePopup = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileFormSubmit
-);
-profilePopup.setEventListeners();
+/******************
+ * Profile Submit *
+ ******************/
 
 function handleProfileFormSubmit(formValues) {
-  showSavingText(saveButton);
-  console.log("Submitting form with values:", formValues); // Log the form values
+  profilePopup.renderLoading(true);
+
   api
     .editUserInfo(formValues)
     .then((editUserInfo) => {
-      console.log("Profile updated:", editUserInfo); // Log the updated user info
       userInfo.setUserInfo(
         editUserInfo.name,
         editUserInfo.about,
@@ -89,91 +89,117 @@ function handleProfileFormSubmit(formValues) {
       );
 
       profilePopup.close();
-      hideSavingText(saveButton);
+      editFormValidator.resetValidation();
     })
     .catch((err) => {
       console.error("Error updating profile:", err);
+    })
+    .finally(() => {
+      profilePopup.renderLoading(false);
+      editFormValidator.disableButton();
     });
 }
+
+const profilePopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileFormSubmit
+);
+profilePopup.setEventListeners();
 
 /*************************
  * Profile Picture Modal *
  *************************/
 
-const profilePictureButton = document.querySelector(".pencil-icon");
+const profilePictureFormValidator = new FormValidator(
+  Settings,
+  profilePictureForm
+);
+profilePictureFormValidator.enableValidation();
 
 profilePictureButton.addEventListener("click", () => {
   profilePicturePopup.open();
 });
 
-const profilePicturePopup = new PopupWithForm(
-  "#profile-picture-modal",
-  handleProfilePictureFormSubmit
-);
-profilePicturePopup.setEventListeners();
-// Selectors for profile picture form
-const profilePictureForm = document.querySelector(
-  "#profile-picture-modal form"
-);
-const profilePictureInput = profilePictureForm.querySelector(
-  'input[name="newProfilePictureUrl"]'
-);
-const profilePictureSaveButton = profilePictureForm.querySelector(
-  'button[type="submit"]'
-);
-
-// Disable save button if form is empty
-profilePictureInput.addEventListener("input", () => {
-  if (profilePictureInput.value.trim() === "") {
-    profilePictureSaveButton.disabled = true;
-  } else {
-    profilePictureSaveButton.disabled = false;
-  }
-});
-
-// Initial check to disable button if input is empty
-if (profilePictureInput.value.trim() === "") {
-  profilePictureSaveButton.disabled = true;
-}
-
-function handleProfilePictureFormSubmit(formValues) {
-  showSavingText(profilePictureSaveButton); // Show saving text
+function handleAvatarFormSubmit(formValues) {
   const newProfilePictureUrl = formValues.newProfilePictureUrl;
-  console.log("New profile picture URL:", newProfilePictureUrl); // Log the new URL
+  profilePicturePopup.renderLoading(true);
 
   api
     .updateProfilePicture(newProfilePictureUrl)
     .then((updatedUser) => {
-      console.log("Profile picture updated response:", updatedUser);
       userInfo.setUserInfo(
         updatedUser.name,
         updatedUser.about,
         updatedUser.avatar
       );
       profilePicturePopup.close();
-      hideSavingText(profilePictureSaveButton); // Hide saving text
+      profilePictureFormValidator.reset();
     })
     .catch((err) => {
       console.error("Error updating profile picture:", err);
-      hideSavingText(profilePictureSaveButton); // Hide saving text on error
+    })
+    .finally(() => {
+      profilePicturePopup.renderLoading(false);
+      profilePictureFormValidator.disableButton();
     });
 }
+
+const profilePicturePopup = new PopupWithForm(
+  "#profile-picture-modal",
+  handleAvatarFormSubmit
+);
+profilePicturePopup.setEventListeners();
 
 /********
  * Card *
  ********/
-// deleteConfirmBtn = document.querySelector("#confirm-delete-button");
 
-// Selectors
-
+const profileCardModal = document.querySelector("#profile-card-modal");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardForm = profileCardModal.querySelector("#newCardForm");
+const addCardSubmitBtn = profileCardModal.querySelector("#card-save");
 const cardSelector = "#card-template";
-const cardListEl = document.querySelector(".cards__list");
+
+/****************
+ * Add New Card *
+ ****************/
+const addFormValidator = new FormValidator(Settings, addCardForm);
+addFormValidator.enableValidation();
+
+addNewCardButton.addEventListener("click", (evt) => {
+  addCardPopup.open();
+});
+
+const addCardPopup = new PopupWithForm(
+  "#profile-card-modal",
+  handleAddCardFormSubmit
+);
+addCardPopup.setEventListeners();
+
+function handleAddCardFormSubmit(data) {
+  addCardPopup.renderLoading(true);
+
+  api
+    .postCards(data)
+    .then((newCard) => {
+      const cardElement = createCard(newCard);
+      section.addItem(cardElement);
+      addCardPopup.close();
+      addFormValidator.reset();
+    })
+    .catch((err) => {
+      console.error("Error adding new card:", err);
+    })
+    .finally(() => {
+      addCardPopup.renderLoading(false);
+      addFormValidator.disableButton();
+    });
+}
 
 /***********************
  * delete card confirm *
  ***********************/
+
 const deleteCardPopup = new PopupWithForm(
   "#confirmation-modal",
   handleDeleteConfirm
@@ -188,20 +214,19 @@ function handleDeleteClick(card) {
 }
 
 function handleDeleteConfirm() {
-  const deleteCardSaveButton = document.querySelector(
-    "#confirmation-modal button[type='submit']"
-  ); // Get the submit button
-  showSavingText(deleteCardSaveButton); // Show saving text
+  deleteCardPopup.renderLoading(true);
   api
     .deleteCard(currentCardToDelete.getId())
     .then(() => {
       currentCardToDelete.removeCard();
       deleteCardPopup.close();
-      hideSavingText(deleteCardSaveButton);
     })
     .catch((err) => {
       console.error("Error deleting card:", err);
       hideSavingText(deleteCardSaveButton);
+    })
+    .finally(() => {
+      deleteCardPopup.renderLoading(false);
     });
 }
 
@@ -222,10 +247,14 @@ function createCard(data) {
     cardSelector,
     handleImageClick,
     () => handleDeleteClick(card),
-    handleLikeClick // Pass the card instance to the delete handler
+    handleLikeClick
   );
   return card.getView();
 }
+/*********
+ * Likes *
+ *********/
+
 function handleLikeClick(card) {
   const isLiked = card.getLikes();
   if (isLiked) {
@@ -255,7 +284,7 @@ function handleLikeClick(card) {
 
 const section = new Section(
   {
-    items: [], // Start with an empty array, to be populated later
+    items: [],
     renderer: (data) => {
       const cardElement = createCard(data);
       section.addItem(cardElement);
@@ -264,52 +293,17 @@ const section = new Section(
   ".cards__list"
 );
 
-// add Card
-addNewCardButton.addEventListener("click", (evt) => {
-  addCardPopup.open();
-});
-
-const addCardPopup = new PopupWithForm(
-  "#profile-card-modal",
-  handleAddCardFormSubmit
-);
-addCardPopup.setEventListeners();
-
-function handleAddCardFormSubmit(data) {
-  const addCardSaveButton = document.querySelector(
-    "#profile-card-modal button[type='submit']"
-  ); // Get the submit button
-  showSavingText(addCardSaveButton); // Show saving text
-
-  showSavingText(saveButton);
-  api
-    .postCards(data)
-    .then((newCard) => {
-      const cardElement = createCard(newCard);
-      section.addItem(cardElement);
-      addCardPopup.close();
-      hideSavingText(addCardSaveButton);
-    })
-    .catch((err) => {
-      console.error("Error adding new card:", err);
-    });
-}
-
-// profile
-
-/************
- * userInfo *
- ************/
+/*****************
+ * Initial Cards *
+ *****************/
 
 function renderCards() {
   api
     .initialCards()
     .then((cards) => {
-      console.log("cards fetched", cards); // Ensure this logs an array of card objects
-
       const section = new Section(
         {
-          items: cards, // Pass the array of card objects
+          items: cards,
           renderer: (data) => {
             const cardElement = createCard(data);
             section.addItem(cardElement);
@@ -317,7 +311,7 @@ function renderCards() {
         },
         ".cards__list"
       );
-      section.renderItems(); // Render all items
+      section.renderItems();
     })
     .catch((err) => {
       console.error("Error loading initial cards:", err);
@@ -325,11 +319,3 @@ function renderCards() {
 }
 
 renderCards();
-
-// Form validation
-
-const editFormValidator = new FormValidator(Settings, profileEditForm);
-const addFormValidator = new FormValidator(Settings, addCardForm);
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();

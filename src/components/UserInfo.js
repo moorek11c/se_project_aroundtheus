@@ -3,7 +3,6 @@ export default class UserInfo {
     this._nameElement = document.querySelector(nameSelector);
     this._aboutElement = document.querySelector(aboutSelector);
     this._avatarElement = document.querySelector(avatarSelector);
-    console.log("avatar", this._avatarElement);
   }
 
   getUserInfo() {
@@ -18,7 +17,7 @@ export default class UserInfo {
     this._nameElement.textContent = name;
     this._aboutElement.textContent = about;
     if (avatar && this._avatarElement) {
-      this._avatarElement.src = avatar; // Set avatar if provided
+      this._avatarElement.src = avatar;
     }
   }
 }
