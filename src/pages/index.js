@@ -36,6 +36,7 @@ const profileEditForm = profileEditModal.querySelector("#editProfileForm");
 /*******************
  * Profile Picture *
  *******************/
+
 const profilePictureButton = document.querySelector(".pencil-icon");
 const profilePictureModal = document.querySelector("#profile-picture-modal");
 const profilePictureForm = profilePictureModal.querySelector(
