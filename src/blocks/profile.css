@@ -7,12 +7,55 @@
   padding-bottom: 51px;
   font-family: "Inter", Arial, sans-serif;
 }
+.profile__picture-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.profile__picture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 50%;
+}
+.profile__picture-container:hover .profile__picture-overlay {
+  opacity: 1;
+}
+
+.pencil-icon {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-image: url("../images/pencil.svg");
+  background-size: contain;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pencil-icon:hover {
+  cursor: pointer;
+}
 
 .profile__picture {
   grid-area: profile-picture;
   background-position: center;
-  object-fit: contain;
-  padding-right: 30px;
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
 }
 
 .profile__info {
@@ -33,6 +76,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  padding-left: 30px;
   grid-area: title;
 }
 
@@ -65,6 +109,7 @@
   overflow: hidden;
   margin: 0;
   padding-top: 7px;
+  padding-left: 30px;
   grid-area: description;
 }
 

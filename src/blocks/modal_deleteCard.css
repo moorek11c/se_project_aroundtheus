@@ -1,0 +1,31 @@
+.confirm__modal-container {
+  height: 181px;
+}
+
+.confirm__modal-button {
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  margin-top: 0;
+  /* margin-bottom: 36px; */
+}
+
+.modal__heading {
+  margin-bottom: 38px;
+}
+
+@media screen and (max-width: 626px) {
+  .confirm__modal-container {
+    height: 181px;
+  }
+
+  .modal__save-button {
+    width: 238px;
+    height: 50px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+  }
+}
