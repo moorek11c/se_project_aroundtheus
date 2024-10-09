@@ -26,6 +26,12 @@ This project showcases several essential features and techniques utilized to cre
 
 - Responsive design that adapts to various screen sizes, including mobile, tablet, and desktop.
 - Maximum width set to **1280px** and minimum width to **320px** for optimal display across devices.
+- Able to like and unlike, add, remove images
+- able to update profile avatar
+
+## Screenshots
+
+
 
 ## Links
 
