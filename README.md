@@ -6,11 +6,10 @@ The **Around The U.S.** project is an exciting endeavor that involves translatin
 
 - [Project Overview](#project-overview)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Links](#links)
 - [Deployment Instructions](#deployment-instructions)
 - [System Requirements](#system-requirements)
-- [Essential Dependencies](#essential-dependencies)
-- [Images and Assets](#images-and-assets)
 
 ## Project Overview
 
