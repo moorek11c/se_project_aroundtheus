@@ -31,7 +31,6 @@ This project showcases several essential features and techniques utilized to cre
 
 - **[Figma Design](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)**: View the original design file for layout and style references.
 - **[Live Project on GitHub Pages](https://moorek11c.github.io/se_project_aroundtheus/)**: Explore the deployed version of the project.
-- **[Project Walkthrough Video](https://drive.google.com/file/d/1Wb_hk_2v6XoeD7vYOkL4Ty-AtZLE8amY/view?usp=drive_link)**: Watch a video that demonstrates the project features and design.
 
 ## Deployment Instructions
 
