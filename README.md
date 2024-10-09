@@ -2,6 +2,16 @@
 
 The **Around The U.S.** project is an exciting endeavor that involves translating a Figma design into a fully functional web application. This project marks the first experience of working directly from a design file, allowing for hands-on practice with front-end development.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Links](#links)
+- [Deployment Instructions](#deployment-instructions)
+- [System Requirements](#system-requirements)
+- [Essential Dependencies](#essential-dependencies)
+- [Images and Assets](#images-and-assets)
+
 ## Project Overview
 
 This project showcases several essential features and techniques utilized to create a responsive web layout:
@@ -21,11 +31,25 @@ This project showcases several essential features and techniques utilized to cre
 
 - **[Figma Design](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)**: View the original design file for layout and style references.
 - **[Live Project on GitHub Pages](https://moorek11c.github.io/se_project_aroundtheus/)**: Explore the deployed version of the project.
+- **[Project Walkthrough Video](https://drive.google.com/file/d/1Wb_hk_2v6XoeD7vYOkL4Ty-AtZLE8amY/view?usp=drive_link)**: Watch a video that demonstrates the project features and design.
 
-## Images and Assets
+## Deployment Instructions
 
-All images and icons used in this project were sourced directly from the Figma design linked above. This ensures consistency with the original design and enhances the visual quality of the application.
+To deploy this project locally, follow these steps:
 
----
+1. **Clone the repository** to your local machine:
+   bash
 
-Feel free to reach out if you have any questions or feedback regarding the project!
+2. **npm install**
+
+3. **npm Run Build**
+
+4. **npm run dev**
+
+5. Open your project and go to [localhost](http://localhost:8080)
+
+## System Requirements
+
+**Following is required**: 
+	•	core-js: Version 3.23.5
+
