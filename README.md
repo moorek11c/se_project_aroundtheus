@@ -1,6 +1,6 @@
 # Project 3: Around The U.S.
 
-The **Around The U.S.** project is an exciting endeavor that involves translating a Figma design into a fully functional web application. This project marks the first experience of working directly from a design file, allowing for hands-on practice with front-end development.
+Around the U.S. project is the first project where we had to look at a Figma design and code it from that.
 
 ## Table of Contents
 
@@ -30,8 +30,6 @@ This project showcases several essential features and techniques utilized to cre
 
 ## Screenshots
 
-
-
 ## Links
 
 - **[Figma Design](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)**: View the original design file for layout and style references.
@@ -54,6 +52,5 @@ To deploy this project locally, follow these steps:
 
 ## System Requirements
 
-**Following is required**: 
-	•	core-js: Version 3.23.5
-
+**Following is required**:
+• core-js: Version 3.23.5

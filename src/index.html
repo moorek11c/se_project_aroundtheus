@@ -16,19 +16,21 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            alt="Profile"
-            class="profile__picture"
-            src="<%=require('../src/images/Avatar.png')%>"
-          />
+          <div class="profile__picture-container">
+            <img alt="Profile" class="profile__picture" name="avatar" src="" />
+
+            <div class="profile__picture-overlay">
+              <button class="pencil-icon"></button>
+            </div>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -65,14 +67,18 @@
               class="modal__input modal__input_type_description"
               placeholder="Description"
               type="text"
-              name="job"
+              name="about"
               minlength="2"
               maxlength="200"
               required
             />
             <span class="modal__error" id="profile-description-error"></span>
           </label>
-          <button class="modal__button modal__save-button" type="submit">
+          <button
+            id="profile-save"
+            class="modal__button modal__save-button"
+            type="submit"
+          >
             Save
           </button>
         </form>
@@ -113,6 +119,7 @@
             <span class="modal__error" id="place-url-error"></span>
           </label>
           <button
+            id="card-save"
             class="modal__button modal__save-button"
             type="submit"
             disabled
@@ -143,6 +150,59 @@
         <h3 class="modal__preview-title" id="modal-title-preview"></h3>
       </div>
     </div>
+    <!-- Are you sure Modal -->
+    <div class="modal confirm__modal" id="confirmation-modal">
+      <div class="modal__container confirm__modal-container">
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="modal__form" action="">
+          <button
+            class="modal__button modal__save-button confirm__modal-button"
+            id="confirm-delete-btn"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+        <button
+          class="modal__close-button"
+          id="confirm-button-close"
+          type="button"
+        ></button>
+      </div>
+    </div>
+
+    <!-- Change Profile Picture Modal -->
+    <div class="modal avatar__modal" id="profile-picture-modal">
+      <div class="modal__container change__modal-container">
+        <h2 class="modal__heading">Change Profile Picture</h2>
+        <form class="modal__form" id="profile-picture-form">
+          <label for="picture-url" class="modal__label">
+            <input
+              id="picture-url"
+              class="modal__input modal__input_type_url"
+              placeholder="Profile Picture URL"
+              type="url"
+              name="newProfilePictureUrl"
+              required
+            />
+            <span class="modal__error" id="picture-url-error"></span>
+          </label>
+          <button
+            class="modal__button modal__save-button"
+            id="profile-picture-save"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+        <button
+          class="modal__close-button"
+          id="profile-picture-modal-close"
+          type="button"
+        ></button>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <div class="card_image_container">
