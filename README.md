@@ -36,11 +36,11 @@ This project showcases several essential features and techniques utilized to cre
 
 ### Add Card
 
-![Add Card Screenshot](./src/ReadMeImages/add-card.png)
+![Add Card Screenshot](./src/ReadMeImages/add-new-card.png)
 
 ### Update Profile
 
-![Update Profile Screenshot](./src/ReadMeImages/update-profile.png)
+![Update Profile Screenshot](./src/ReadMeImages/change-profile-picture.png)
 
 ## Links
 
