@@ -30,6 +30,18 @@ This project showcases several essential features and techniques utilized to cre
 
 ## Screenshots
 
+### Desktop
+
+![Desktop Screenshot](./src/ReadMeImages/card-likes-unlikes.png)
+
+### Add Card
+
+![Add Card Screenshot](./src/ReadMeImages/add-card.png)
+
+### Update Profile
+
+![Update Profile Screenshot](./src/ReadMeImages/update-profile.png)
+
 ## Links
 
 - **[Figma Design](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)**: View the original design file for layout and style references.
